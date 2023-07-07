@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  capitole-challenge:
+    image: capitole-challenge:latest
+    networks:
+      - capitole-challenge
+    ports:
+      - 8080:8080
+    environment:
+      - DB_USER=adminDocker
+      - DB_PASS=C@pitol3Docker
+      - DB_NAME=capitole
+    healthcheck:
+      test: curl --fail http://localhost:8080/actuator/health
+      interval: 60s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+networks:
+  capitole-challenge:
+    name: capitole-challenge_net
