@@ -18,9 +18,10 @@ Application to simulate a Capitole Response using Springboot
 * ---------------------------------------------------------------------------------------------------------------
 ### Run Application ###
 * Clone capitole-challenge to in/your/path:
-*    git clone https://github.com/Dulcire/capitole_challenge.git
-***There are two ways to run the application***
-### Docker ### 
+* git clone https://github.com/Dulcire/capitole_challenge.git
+* 
+**There are two ways to run the application**
+### Option 1 : By Docker ### 
 * If you want to run the application by Docker follow this steps
 * Go to your capitole-challenge:
 *      cd capitole-challenge
@@ -28,7 +29,7 @@ Application to simulate a Capitole Response using Springboot
 *      Option 1: docker compose up
 *      Option 2: docker run --rm -p 8080:8080 --name capitole-challenge capitole-challenge
 
-### Manually ###
+### Option 2: Manually ###
 
 * Go to your capitole-challenge: 
 *     cd capitole-challenge
