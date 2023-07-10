@@ -6,28 +6,30 @@ Application to simulate a Capitole Response using Springboot
 ### Pre - requisites ###
 
 * Git
-* Install JDK 8+
+* Install JDK 17
 * Define JDK in JAVA_HOME
 * Install Apache Maven 3
 * Install Docker
     
 
 ***You can change DB properties in application.yml***
-***If you are using the docker image you can set DB properties in docker-compose.yaml***
+*** or If you are using the docker image you can set DB properties in docker-compose.yaml***
 
 * ---------------------------------------------------------------------------------------------------------------
+### Run Application ###
+* Clone capitole-challenge to in/your/path:
+*     https://github.com/Dulcire/capitole_challenge.git
 ***There are two ways to run the application***
 ### Docker ### 
 * If you want to run the application by Docker follow this steps
 * Go to your capitole-challenge:
 *      cd capitole-challenge
 *      docker build -t capitole-challenge:latest .
-*      Option 1: docker run --rm -p 8080:8080 --name capitole-challenge capitole-challenge
-*      Option 2: docker compose up
+*      Option 1: docker compose up
+*      Option 2: docker run --rm -p 8080:8080 --name capitole-challenge capitole-challenge
 
 ### Manually ###
-* Clone capitole-challenge to in/your/path: 
-*     https://github.com/Dulcire/capitole_challenge.git
+
 * Go to your capitole-challenge: 
 *     cd capitole-challenge
 * execute:
