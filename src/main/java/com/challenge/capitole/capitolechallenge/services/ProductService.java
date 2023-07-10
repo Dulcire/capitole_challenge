@@ -18,10 +18,22 @@ public class ProductService {
     private final CapitoleMapper mapper
         = Mappers.getMapper(CapitoleMapper.class);
 
+    /**
+     * Method to get a product from DB.
+     * @param code product code.
+     * @return a product information.
+     * @throws NotFoundException if the product does not exist in DB.
+     */
     public ProductDto getProductByCode(final String code) throws NotFoundException {
         return getProductInfo(code);
     }
 
+    /**
+     * Method to get a product from DB.
+     * @param code product code.
+     * @return a product information.
+     * @throws NotFoundException if the product does not exist in DB.
+     */
     private ProductDto getProductInfo(final String code) throws NotFoundException {
         final Product product = respository.findProductByCode(code)
             .orElseThrow(() -> {

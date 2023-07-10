@@ -28,11 +28,27 @@ public class PriceService {
     private final CapitoleMapper mapper
         = Mappers.getMapper(CapitoleMapper.class);
 
+    /**
+     * Method to get a list of prices which match with the data request from DB.
+     * @param startDate start Date.
+     * @param brandCode code of the brand.
+     * @param productCode code of the product.
+     * @return list of prices
+     * @throws NotFoundException if there are no registers with the brand, product and date.
+     */
     public List<PriceDto> getPrice(final Timestamp startDate, final String brandCode, final String productCode)
         throws NotFoundException {
         return getPriceInfo(startDate, brandCode, productCode);
     }
 
+    /**
+     * Method to get a list of prices which match with the data request from DB.
+     * @param startDate start Date.
+     * @param brandCode code of the brand.
+     * @param productCode code of the product.
+     * @return list of prices
+     * @throws NotFoundException if there are no registers with the brand, product and date.
+     */
     private List<PriceDto> getPriceInfo(final Timestamp startDate, final String brandCode, final String productCode)
         throws NotFoundException {
         final List<Price> priceList = respository

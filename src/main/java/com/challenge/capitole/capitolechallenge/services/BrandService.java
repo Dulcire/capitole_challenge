@@ -19,10 +19,22 @@ public class BrandService {
         = Mappers.getMapper(CapitoleMapper.class);
 
 
+    /**
+     * Method to get a Brand form the DB using the code.
+     * @param code code
+     * @return Brand Dto
+     * @throws NotFoundException if the brand does not exist.
+     */
     public BrandDto getBrandtByCode(final String code) throws NotFoundException {
         return getBrandInfo(code);
     }
 
+    /**
+     * Method to get a Brand form the DB using the code.
+     * @param code code
+     * @return Brand Dto
+     * @throws NotFoundException if the brand does not exist.
+     */
     private BrandDto getBrandInfo(final String code) throws NotFoundException {
         final Brand brand = respository.findBrandByCode(code)
             .orElseThrow(() -> {
