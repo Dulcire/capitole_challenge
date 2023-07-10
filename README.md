@@ -12,13 +12,13 @@ Application to simulate a Capitole Response using Springboot
 * Install Docker
     
 
-***You can change DB properties in application.yml***
-*** or If you are using the docker image you can set DB properties in docker-compose.yaml***
+**You can change DB properties in application.yml**
+**or If you are using the docker image you can set DB properties in docker-compose.yaml**
 
 * ---------------------------------------------------------------------------------------------------------------
 ### Run Application ###
 * Clone capitole-challenge to in/your/path:
-*     https://github.com/Dulcire/capitole_challenge.git
+*    git clone https://github.com/Dulcire/capitole_challenge.git
 ***There are two ways to run the application***
 ### Docker ### 
 * If you want to run the application by Docker follow this steps
