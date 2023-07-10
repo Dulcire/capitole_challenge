@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS `PRICES` (
                                         `ID`         INTEGER  PRIMARY KEY AUTO_INCREMENT,
                                         `PRIORITY` INTEGER NOT NULL,
@@ -13,17 +12,19 @@ CREATE TABLE IF NOT EXISTS `PRICES` (
 
 CREATE TABLE IF NOT EXISTS `BRANDS` (
                                         `ID`         INTEGER  PRIMARY KEY AUTO_INCREMENT,
+                                        `CODE` VARCHAR(20) NOT NULL,
                                         `NAME` VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `PRODUCTS` (
                                         `ID`         INTEGER  PRIMARY KEY AUTO_INCREMENT,
+                                        `CODE` VARCHAR(20) NOT NULL,
                                         `NAME` VARCHAR(20) NOT NULL
     );
 
 CREATE TABLE IF NOT EXISTS `PRICES_LIST` (
                                         `ID`         INTEGER  PRIMARY KEY AUTO_INCREMENT,
-                                        `NAME` VARCHAR(20) NOT NULL
+                                        `PRICE` DOUBLE NOT NULL
     );
 ALTER TABLE PRICES
     ADD CONSTRAINT BRAND_ID_FK
@@ -36,3 +37,6 @@ ALTER TABLE PRICES
 ALTER TABLE PRICES
     ADD CONSTRAINT PRICE_LIST_ID_FK
         FOREIGN KEY (PRICE_LIST) REFERENCES PRICES_LIST;
+
+-- Commit the transaction
+COMMIT;

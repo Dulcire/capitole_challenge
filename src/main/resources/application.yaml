@@ -1,20 +1,24 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:${DB_NAME:capitole}
+    url: jdbc:h2:mem:${DB_NAME:CAPITOLE}
     driverClassName: org.h2.Driver
     username: ${DB_USER:adminUser}
     password: ${DB_PASS:C@pitol3}
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-
+    hibernate.ddl-auto: none
+    database: h2
+    properties:
+      hibernate:
+        default_schema: ${DB_NAME:CAPITOLE}
   h2:
     console.enabled: true
 
   flyway:
     user: ${DB_USER:adminUser}
     password: ${DB_PASS:C@pitol3}
-    schemas: ${DB_NAME:capitole}
-    url: jdbc:h2:mem:${DB_NAME:capitole}
+    schemas: ${DB_NAME:CAPITOLE}
+    url: jdbc:h2:mem:${DB_NAME:CAPITOLE}
     locations: classpath:db/migration
     baseline-on-migrate: true

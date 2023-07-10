@@ -13,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -24,6 +26,8 @@ import org.hibernate.Hibernate;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "PRICES")
 public class Price {
     @Id
@@ -50,13 +54,13 @@ public class Price {
 
     @ManyToOne
     @JoinColumn(name = "PRICE_LIST", nullable = false)
-    private Price price_list;
+    private PriceList priceList;
 
     @Column(name = "START_DATE")
-    private Timestamp start_date;
+    private Timestamp startDate;
 
     @Column(name = "END_DATE")
-    private Timestamp end_date;
+    private Timestamp endDate;
 
     @Override
     public boolean equals(final Object o) {

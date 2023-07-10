@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -17,14 +19,16 @@ import org.hibernate.Hibernate;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "PRICES_LIST")
 public class PriceList {
     @Id
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NAME")
-    private String name;
+    @Column(name = "PRICE")
+    private Double price;
 
     @Override
     public boolean equals(final Object o) {

@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -17,11 +19,16 @@ import org.hibernate.Hibernate;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Table(name = "BRANDS")
+@Builder
 public class Brand {
     @Id
     @Column(name = "ID")
     private Long id;
+
+    @Column(name = "CODE", unique = true)
+    private String code;
 
     @Column(name = "NAME")
     private String name;
