@@ -48,9 +48,9 @@ public class ResponseService {
     }
 
     /**
-     * Method to set the information obtained from a list of prices
-     * @param prices list of prices from DB
-     * @return List of information to send to a user
+     * Method to set the information obtained from a list of prices.
+     * @param prices list of prices from DB.
+     * @return List of information to send to a user.
      */
     private List<InfoDto> getInfo(final List<PriceDto> prices) {
         return prices.stream().map(mapper::mapToInfoDto).collect(Collectors.toList());
