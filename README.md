@@ -25,6 +25,8 @@ Application to simulate a Capitole Response using Springboot
 * If you want to run the application by Docker follow this steps
 * Go to your capitole-challenge:
 *      cd capitole-challenge
+* execute:
+*     mvn clean install  
 *      docker build -t capitole-challenge:latest .
 *      Option 1: docker compose up
 *      Option 2: docker run --rm -p 8080:8080 --name capitole-challenge capitole-challenge
