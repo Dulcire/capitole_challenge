@@ -1,9 +1,9 @@
-package com.challenge.capitole.capitolechallenge.services;
+package com.challenge.capitole.capitolechallenge.services.v1;
 
 import com.challenge.capitole.capitolechallenge.dtos.ProductDto;
 import com.challenge.capitole.capitolechallenge.exception.NotFoundException;
 import com.challenge.capitole.capitolechallenge.repositories.ProductRepository;
-import com.challenge.capitole.capitolechallenge.services.impl.ProductService;
+import com.challenge.capitole.capitolechallenge.services.impl.v1.ProductServiceImpl;
 import com.challenge.capitole.capitolechallenge.util.ErrorMessages;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.util.Optional;
@@ -25,7 +25,7 @@ class ProductServiceImplTest {
     private ProductRepository repository;
 
     @Autowired
-    private ProductService service;
+    private ProductServiceImpl service;
 
     @Test
     void getBrandByCodeTest() throws NotFoundException {

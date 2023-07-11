@@ -1,18 +1,17 @@
-package com.challenge.capitole.capitolechallenge.services;
+package com.challenge.capitole.capitolechallenge.services.v1;
 
 
 import com.challenge.capitole.capitolechallenge.dtos.InfoDto;
 import com.challenge.capitole.capitolechallenge.exception.NotFoundException;
 import com.challenge.capitole.capitolechallenge.exception.ValidationException;
 import com.challenge.capitole.capitolechallenge.model.Brand;
-import com.challenge.capitole.capitolechallenge.model.Price;
 import com.challenge.capitole.capitolechallenge.model.PriceList;
 import com.challenge.capitole.capitolechallenge.model.Product;
 import com.challenge.capitole.capitolechallenge.repositories.BrandRepository;
 import com.challenge.capitole.capitolechallenge.repositories.PriceListRepository;
 import com.challenge.capitole.capitolechallenge.repositories.PriceRepository;
 import com.challenge.capitole.capitolechallenge.repositories.ProductRepository;
-import com.challenge.capitole.capitolechallenge.services.impl.ResponseService;
+import com.challenge.capitole.capitolechallenge.services.impl.v1.ResponseServiceImpl;
 import com.challenge.capitole.capitolechallenge.util.ErrorMessages;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.sql.Timestamp;
@@ -50,7 +49,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ResponseServiceImplTest {
 
     @Autowired
-    private ResponseService responseServiceImpl;
+    private ResponseServiceImpl responseServiceImpl;
 
     @Autowired
     private BrandRepository brandRepository;

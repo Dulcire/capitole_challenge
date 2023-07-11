@@ -1,9 +1,9 @@
-package com.challenge.capitole.capitolechallenge.services;
+package com.challenge.capitole.capitolechallenge.services.v1;
 
 import com.challenge.capitole.capitolechallenge.dtos.PriceDto;
 import com.challenge.capitole.capitolechallenge.exception.NotFoundException;
 import com.challenge.capitole.capitolechallenge.repositories.PriceRepository;
-import com.challenge.capitole.capitolechallenge.services.impl.PriceService;
+import com.challenge.capitole.capitolechallenge.services.impl.v1.PriceServiceImpl;
 import com.challenge.capitole.capitolechallenge.util.ErrorMessages;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.util.List;
@@ -28,7 +28,7 @@ class PriceServiceImplTest {
     private PriceRepository repository;
 
     @Autowired
-    private PriceService service;
+    private PriceServiceImpl service;
 
     @Test
     void getBrandByCodeTest() throws NotFoundException {

@@ -4,9 +4,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.challenge.capitole.capitolechallenge.services.impl.BrandService;
-import com.challenge.capitole.capitolechallenge.services.impl.PriceService;
-import com.challenge.capitole.capitolechallenge.services.impl.ProductService;
 import com.challenge.capitole.capitolechallenge.services.impl.ResponseService;
 import com.challenge.capitole.capitolechallenge.dtos.InfoDto;
 import com.challenge.capitole.capitolechallenge.dtos.PriceDto;
@@ -22,13 +19,13 @@ public class ResponseServiceImpl implements ResponseService {
 
 
     @Autowired
-    private PriceService priceServiceImpl;
+    private PriceServiceImpl priceServiceImpl;
 
     @Autowired
-    private ProductService productServiceImpl;
+    private ProductServiceImpl productServiceImpl;
 
     @Autowired
-    private BrandService brandServiceImpl;
+    private BrandServiceImpl brandServiceImpl;
 
     private final CapitoleMapper mapper
         = Mappers.getMapper(CapitoleMapper.class);
