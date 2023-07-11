@@ -3,6 +3,7 @@ package com.challenge.capitole.capitolechallenge.services;
 import com.challenge.capitole.capitolechallenge.dtos.BrandDto;
 import com.challenge.capitole.capitolechallenge.exception.NotFoundException;
 import com.challenge.capitole.capitolechallenge.repositories.BrandRepository;
+import com.challenge.capitole.capitolechallenge.services.impl.BrandService;
 import com.challenge.capitole.capitolechallenge.util.ErrorMessages;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.util.Optional;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-class BrandServiceTest {
+class BrandServiceImplTest {
 
     @MockBean
     private BrandRepository repository;
@@ -38,9 +39,8 @@ class BrandServiceTest {
 
     @Test()
     void getBrandByCodeExceptionTest() {
-        Exception exception = assertThrows(NotFoundException.class, () -> {
-            service.getBrandtByCode(BRAND_CODE_1);
-        });
+        Exception exception = assertThrows(NotFoundException.class, () -> service
+            .getBrandtByCode(BRAND_CODE_1));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(ErrorMessages.BRAND_NOT_FOUND, BRAND_CODE_1)));
     }

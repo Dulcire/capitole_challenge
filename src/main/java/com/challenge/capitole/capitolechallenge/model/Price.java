@@ -1,5 +1,6 @@
 package com.challenge.capitole.capitolechallenge.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -29,7 +30,9 @@ import org.hibernate.Hibernate;
 @AllArgsConstructor
 @Builder
 @Table(name = "PRICES")
-public class Price {
+public class Price implements Serializable {
+    private static final long serialVersionUID = -1663840504969255751L;
+
     @Id
     @Column(name = "ID")
     private Long id;

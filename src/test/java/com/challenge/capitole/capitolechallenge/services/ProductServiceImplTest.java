@@ -3,6 +3,7 @@ package com.challenge.capitole.capitolechallenge.services;
 import com.challenge.capitole.capitolechallenge.dtos.ProductDto;
 import com.challenge.capitole.capitolechallenge.exception.NotFoundException;
 import com.challenge.capitole.capitolechallenge.repositories.ProductRepository;
+import com.challenge.capitole.capitolechallenge.services.impl.ProductService;
 import com.challenge.capitole.capitolechallenge.util.ErrorMessages;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.util.Optional;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-class ProductServiceTest {
+class ProductServiceImplTest {
 
     @MockBean
     private ProductRepository repository;
@@ -38,9 +39,8 @@ class ProductServiceTest {
 
     @Test()
     void getBrandByCodeExceptionTest() {
-        Exception exception = assertThrows(NotFoundException.class, () -> {
-            service.getProductByCode(PRODUCT_CODE_1);
-        });
+        Exception exception = assertThrows(NotFoundException.class, () -> service
+            .getProductByCode(PRODUCT_CODE_1));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(ErrorMessages.PRODUCT_NOT_FOUND, PRODUCT_CODE_1)));
     }

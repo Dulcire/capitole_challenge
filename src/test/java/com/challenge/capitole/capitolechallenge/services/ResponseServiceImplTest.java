@@ -12,6 +12,7 @@ import com.challenge.capitole.capitolechallenge.repositories.BrandRepository;
 import com.challenge.capitole.capitolechallenge.repositories.PriceListRepository;
 import com.challenge.capitole.capitolechallenge.repositories.PriceRepository;
 import com.challenge.capitole.capitolechallenge.repositories.ProductRepository;
+import com.challenge.capitole.capitolechallenge.services.impl.ResponseService;
 import com.challenge.capitole.capitolechallenge.util.ErrorMessages;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.sql.Timestamp;
@@ -46,10 +47,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ResponseServiceTest {
+public class ResponseServiceImplTest {
 
     @Autowired
-    private ResponseService responseService;
+    private ResponseService responseServiceImpl;
 
     @Autowired
     private BrandRepository brandRepository;
@@ -86,9 +87,9 @@ public class ResponseServiceTest {
             PRICE_LIST_PRICE2));
 
         //Creating Price in DB
-        final Price price = priceRepository.save(TestGenerator.priceListGenerator(
+        priceRepository.save(TestGenerator.priceListGenerator(
             PRICE_ID_1, product1, brand1, priceList1, date).get(0));
-        final Price price2 = priceRepository.save(TestGenerator.priceListGenerator(
+        priceRepository.save(TestGenerator.priceListGenerator(
             ID_2, product2, brand2, priceList2, date).get(0));
     }
 
@@ -103,16 +104,16 @@ public class ResponseServiceTest {
     @Test
     void getInfoTest() throws NotFoundException {
         final List<InfoDto> expected = TestGenerator.infoDtoListGenerator(date);
-        final List<InfoDto> infoDto = responseService.getInfo(date, BRAND_CODE_1, PRODUCT_CODE_1);
+        final List<InfoDto> infoDto = responseServiceImpl
+            .getInfo(date, BRAND_CODE_1, PRODUCT_CODE_1);
         assertFalse(infoDto.isEmpty());
         assertEquals(expected.get(0), infoDto.get(0));
     }
 
     @Test
     void getInfoNotFoundProductTest() {
-        Exception exception = assertThrows(NotFoundException.class, () -> {
-            responseService.getInfo(date, BRAND_CODE_1, PRODUCT_CODE_2);
-        });
+        Exception exception = assertThrows(NotFoundException.class, () -> responseServiceImpl
+            .getInfo(date, BRAND_CODE_1, PRODUCT_CODE_2));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(
             ErrorMessages.DATA_NOT_FOUND, PRODUCT_CODE_2, BRAND_CODE_1, date)));
@@ -121,9 +122,8 @@ public class ResponseServiceTest {
 
     @Test()
     void getInfoNotFoundBrandTest() {
-        Exception exception = assertThrows(NotFoundException.class, () -> {
-            responseService.getInfo(date, BRAND_CODE_2, PRODUCT_CODE_1);
-        });
+        Exception exception = assertThrows(NotFoundException.class, () -> responseServiceImpl
+            .getInfo(date, BRAND_CODE_2, PRODUCT_CODE_1));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(
             ErrorMessages.DATA_NOT_FOUND, PRODUCT_CODE_1, BRAND_CODE_2, date)));
@@ -131,9 +131,8 @@ public class ResponseServiceTest {
 
     @Test()
     void getInfoNotFoundDateTest() {
-        Exception exception = assertThrows(NotFoundException.class, () -> {
-            responseService.getInfo(START_DATE, BRAND_CODE_1, PRODUCT_CODE_1);
-        });
+        Exception exception = assertThrows(NotFoundException.class, () -> responseServiceImpl
+            .getInfo(START_DATE, BRAND_CODE_1, PRODUCT_CODE_1));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(
             ErrorMessages.DATA_NOT_FOUND, PRODUCT_CODE_1, BRAND_CODE_1, START_DATE)));
@@ -141,9 +140,8 @@ public class ResponseServiceTest {
 
     @Test
     void getInfoValidationProductTest() {
-        Exception exception = assertThrows(ValidationException.class, () -> {
-            responseService.getInfo(date, BRAND_CODE_1, PRODUCT_CODE_3);
-        });
+        Exception exception = assertThrows(ValidationException.class, () -> responseServiceImpl
+            .getInfo(date, BRAND_CODE_1, PRODUCT_CODE_3));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(
             ErrorMessages.PRODUCT_NOT_FOUND, PRODUCT_CODE_3)));
@@ -152,9 +150,8 @@ public class ResponseServiceTest {
 
     @Test()
     void getInfoValidationBrandTest() {
-        Exception exception = assertThrows(ValidationException.class, () -> {
-            responseService.getInfo(date, BRAND_CODE_3, PRODUCT_CODE_1);
-        });
+        Exception exception = assertThrows(ValidationException.class, () -> responseServiceImpl
+            .getInfo(date, BRAND_CODE_3, PRODUCT_CODE_1));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(
             ErrorMessages.BRAND_NOT_FOUND, BRAND_CODE_3)));

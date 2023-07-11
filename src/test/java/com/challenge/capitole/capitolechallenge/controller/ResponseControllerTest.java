@@ -1,6 +1,7 @@
 package com.challenge.capitole.capitolechallenge.controller;
 
-import com.challenge.capitole.capitolechallenge.services.ResponseService;
+
+import com.challenge.capitole.capitolechallenge.services.impl.v1.ResponseServiceImpl;
 import com.challenge.capitole.capitolechallenge.util.CapitoleConstants;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.sql.Timestamp;
@@ -27,7 +28,7 @@ class ResponseControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private ResponseService service;
+    private ResponseServiceImpl service;
 
     @Test
     void getResponseTest() throws Exception {

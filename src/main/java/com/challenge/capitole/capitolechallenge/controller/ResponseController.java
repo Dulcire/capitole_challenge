@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import com.challenge.capitole.capitolechallenge.dtos.ErrorDetails;
 import com.challenge.capitole.capitolechallenge.dtos.ResponseDto;
-import com.challenge.capitole.capitolechallenge.services.ResponseService;
+import com.challenge.capitole.capitolechallenge.services.impl.v1.ResponseServiceImpl;
 import com.challenge.capitole.capitolechallenge.util.CapitoleConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ResponseController {
 
     @Autowired
-    public ResponseService service;
+    public ResponseServiceImpl service;
 
     @Operation(summary = "Get Response", description = "Get Information about a product")
     @ApiResponses(value = {

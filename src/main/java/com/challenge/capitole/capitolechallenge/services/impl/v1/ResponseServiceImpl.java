@@ -1,9 +1,13 @@
-package com.challenge.capitole.capitolechallenge.services;
+package com.challenge.capitole.capitolechallenge.services.impl.v1;
 
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.challenge.capitole.capitolechallenge.services.impl.BrandService;
+import com.challenge.capitole.capitolechallenge.services.impl.PriceService;
+import com.challenge.capitole.capitolechallenge.services.impl.ProductService;
+import com.challenge.capitole.capitolechallenge.services.impl.ResponseService;
 import com.challenge.capitole.capitolechallenge.dtos.InfoDto;
 import com.challenge.capitole.capitolechallenge.dtos.PriceDto;
 import com.challenge.capitole.capitolechallenge.exception.NotFoundException;
@@ -14,37 +18,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ResponseService {
+public class ResponseServiceImpl implements ResponseService {
 
 
     @Autowired
-    private PriceService priceService;
+    private PriceService priceServiceImpl;
 
     @Autowired
-    private ProductService productService;
+    private ProductService productServiceImpl;
 
     @Autowired
-    private BrandService brandService;
+    private BrandService brandServiceImpl;
 
     private final CapitoleMapper mapper
         = Mappers.getMapper(CapitoleMapper.class);
 
-    /**
-     * Method to get product information.
-     *
-     * @param startDate   application date.
-     * @param brandCode   brand identification.
-     * @param productCode product identification.
-     * @return ResponseDto with Product information.
-     */
+    @Override
     public List<InfoDto> getInfo(final Timestamp startDate, final String brandCode, final String productCode) throws NotFoundException {
         try {
-            brandService.getBrandtByCode(brandCode);
-            productService.getProductByCode(productCode);
+            brandServiceImpl.getBrandtByCode(brandCode);
+            productServiceImpl.getProductByCode(productCode);
         } catch (final NotFoundException exception) {
             throw new ValidationException(exception.getMessage());
         }
-        return getInfo(priceService.getPrice(startDate, brandCode, productCode));
+        return getInfo(priceServiceImpl.getPrice(startDate, brandCode, productCode));
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.challenge.capitole.capitolechallenge.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -22,7 +23,9 @@ import org.hibernate.Hibernate;
 @AllArgsConstructor
 @Builder
 @Table(name = "PRICES_LIST")
-public class PriceList {
+public class PriceList implements Serializable {
+    private static final long serialVersionUID = 3728446252832028527L;
+
     @Id
     @Column(name = "ID")
     private Long id;

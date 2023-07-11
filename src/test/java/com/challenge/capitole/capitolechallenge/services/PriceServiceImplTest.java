@@ -3,6 +3,7 @@ package com.challenge.capitole.capitolechallenge.services;
 import com.challenge.capitole.capitolechallenge.dtos.PriceDto;
 import com.challenge.capitole.capitolechallenge.exception.NotFoundException;
 import com.challenge.capitole.capitolechallenge.repositories.PriceRepository;
+import com.challenge.capitole.capitolechallenge.services.impl.PriceService;
 import com.challenge.capitole.capitolechallenge.util.ErrorMessages;
 import com.challenge.capitole.capitolechallenge.utils.TestGenerator;
 import java.util.List;
@@ -21,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
-class PriceServiceTest {
+class PriceServiceImplTest {
 
     @MockBean
     private PriceRepository repository;
@@ -49,9 +50,8 @@ class PriceServiceTest {
 
     @Test()
     void getBrandByCodeNotFoundExceptionTest() {
-        Exception exception = assertThrows(NotFoundException.class, () -> {
-            service.getPrice(START_DATE, BRAND_CODE_1, PRODUCT_CODE_1);
-        });
+        Exception exception = assertThrows(NotFoundException.class, () -> service
+            .getPrice(START_DATE, BRAND_CODE_1, PRODUCT_CODE_1));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(String.format(ErrorMessages.DATA_NOT_FOUND, PRODUCT_CODE_1, BRAND_CODE_1, START_DATE)));
     }
